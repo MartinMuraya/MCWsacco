@@ -26,7 +26,7 @@
                 <div class="form-group" style="margin-bottom: 0;">
                     <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.75rem;">
                         <label style="font-weight: 600; font-size: 0.9rem; color: var(--text-main); margin-bottom: 0;">Password</label>
-                        <a href="{{ route('password.request') }}" style="font-size: 0.85rem; color: var(--primary); text-decoration: none; font-weight: 600;">Forgot?</a>
+                        <a href="{{ route('password.request') }}" style="font-size: 0.85rem; color: var(--primary); text-decoration: none; font-weight: 600;">Forgot Password?</a>
                     </div>
                     <div style="position: relative;">
                         <i class="ph ph-lock" style="position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--text-gray); font-size: 1.25rem;"></i>
