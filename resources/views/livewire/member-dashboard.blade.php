@@ -43,43 +43,43 @@
 
     <div class="grid-cards" style="grid-template-columns: 2fr 1fr;">
         <!-- Recent Transactions -->
-        <div class="card">
-            <h3 style="margin-bottom: 1.5rem; font-size: 1.25rem;">Recent Transactions</h3>
+        <div class="card" style="background: var(--bg-card);">
+            <h3 style="margin-bottom: 1.5rem; font-size: 1.25rem; color: var(--text-main);">Recent Transactions</h3>
             
             <div style="display: flex; flex-direction: column; gap: 1rem;">
                 <!-- Placeholder for transactions -->
-                <div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 1rem; border-bottom: 1px solid var(--border-color);">
+                <div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 1rem; border-bottom: 1px solid var(--border);">
                     <div style="display: flex; align-items: center; gap: 1rem;">
-                        <div style="width: 40px; height: 40px; border-radius: 50%; background: #ECFDF5; color: var(--secondary-color); display: flex; align-items: center; justify-content: center;">
+                        <div style="width: 40px; height: 40px; border-radius: 50%; background: rgba(16, 185, 129, 0.1); color: var(--secondary); display: flex; align-items: center; justify-content: center;">
                             <i class="ph ph-arrow-down-left"></i>
                         </div>
                         <div>
-                            <div style="font-weight: 500;">Monthly Contribution</div>
-                            <div style="font-size: 0.85rem; color: var(--text-muted);">Today, 10:24 AM</div>
+                            <div style="font-weight: 500; color: var(--text-main);">Monthly Contribution</div>
+                            <div style="font-size: 0.85rem; color: var(--text-gray);">Today, 10:24 AM</div>
                         </div>
                     </div>
-                    <div style="font-weight: 600; color: var(--secondary-color);">+ KES 5,000.00</div>
+                    <div style="font-weight: 600; color: var(--secondary);">+ KES 5,000.00</div>
                 </div>
 
-                <div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 1rem; border-bottom: 1px solid var(--border-color);">
+                <div style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 1rem; border-bottom: 1px solid var(--border);">
                     <div style="display: flex; align-items: center; gap: 1rem;">
-                        <div style="width: 40px; height: 40px; border-radius: 50%; background: #FEF2F2; color: #EF4444; display: flex; align-items: center; justify-content: center;">
+                        <div style="width: 40px; height: 40px; border-radius: 50%; background: rgba(239, 68, 68, 0.1); color: #EF4444; display: flex; align-items: center; justify-content: center;">
                             <i class="ph ph-arrow-up-right"></i>
                         </div>
                         <div>
-                            <div style="font-weight: 500;">Loan Repayment</div>
-                            <div style="font-size: 0.85rem; color: var(--text-muted);">Yesterday</div>
+                            <div style="font-weight: 500; color: var(--text-main);">Loan Repayment</div>
+                            <div style="font-size: 0.85rem; color: var(--text-gray);">Yesterday</div>
                         </div>
                     </div>
                     <div style="font-weight: 600; color: #EF4444;">- KES 12,500.00</div>
                 </div>
             </div>
             
-            <a href="#" style="display: block; text-align: center; margin-top: 1.5rem; color: var(--primary-color); text-decoration: none; font-weight: 500;">View All Transactions</a>
+            <a href="#" style="display: block; text-align: center; margin-top: 1.5rem; color: var(--primary); text-decoration: none; font-weight: 500;">View All Transactions</a>
         </div>
 
         <!-- Quick Actions -->
-        <div class="card" style="background: linear-gradient(135deg, var(--primary-color), var(--primary-dark)); color: white;">
+        <div class="card" style="background: linear-gradient(135deg, var(--primary), var(--primary-hover)); color: white;">
             <h3 style="margin-bottom: 1.5rem; color: white;">Quick Actions</h3>
             
             <div style="display: flex; flex-direction: column; gap: 1rem;">

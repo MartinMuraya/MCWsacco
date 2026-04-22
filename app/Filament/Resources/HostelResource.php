@@ -17,7 +17,9 @@ class HostelResource extends Resource
 {
     protected static ?string $model = Hostel::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-home-modern';
+    protected static ?string $navigationGroup = 'Website Management';
+    protected static ?int $navigationSort = 2;
 
     public static function form(Form $form): Form
     {

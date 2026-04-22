@@ -16,7 +16,7 @@
         </div>
     </section>
 
-    <section id="features" style="padding: 5rem 0; background: white;">
+    <section id="features" style="padding: 5rem 0; background: var(--bg-main);">
         <div class="container">
             <div class="grid-cards" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
                 <div class="text-center">
@@ -44,7 +44,7 @@
     </section>
 
     @if($hostel && $hostel->gallery && count($hostel->gallery) > 0)
-    <section id="gallery" style="padding: 5rem 0; background: var(--bg-light);">
+    <section id="gallery" style="padding: 5rem 0; background: var(--bg-card);">
         <div class="container">
             <div class="section-header">
                 <h2>Hostel <span>Gallery</span></h2>
@@ -61,7 +61,7 @@
     </section>
     @endif
 
-    <section id="booking" style="padding: 5rem 0; background: white;">
+    <section id="booking" style="padding: 5rem 0; background: var(--bg-main);">
         <div class="container">
             <div class="section-header">
                 <h2>Available <span>Rooms</span></h2>
@@ -100,7 +100,7 @@
                 </div>
 
                 @guest
-                    <div class="card" style="text-align: center; padding: 3rem; background: rgba(16, 185, 129, 0.05); border: 2px dashed var(--secondary); margin-top: 3rem;">
+                    <div class="card" style="text-align: center; padding: 3rem; background: var(--bg-card); border: 2px dashed var(--secondary); margin-top: 3rem;">
                         <i class="ph ph-buildings" style="font-size: 3rem; color: var(--secondary); margin-bottom: 1rem;"></i>
                         <h3>Ready to Reserve?</h3>
                         <p style="color: var(--text-gray); margin-bottom: 2rem; max-width: 400px; margin-left: auto; margin-right: auto;">

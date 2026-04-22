@@ -36,7 +36,15 @@
             </div>
 
             <div class="nav-actions">
+                <button id="theme-toggle" class="theme-toggle" title="Toggle Theme">
+                    <i class="ph ph-moon"></i>
+                </button>
                 @auth
+                    @if(auth()->user()->hasRole('admin') || auth()->user()->email === 'admin@mwsacco.co.ke')
+                        <a href="/admin" class="btn btn-outline btn-sm" style="border-color: var(--accent); color: var(--accent);">
+                            <i class="ph ph-shield-check"></i> Admin Portal
+                        </a>
+                    @endif
                     <a href="{{ route('dashboard') }}" class="btn btn-primary btn-sm">
                         <i class="ph ph-squares-four"></i> Dashboard
                     </a>
@@ -133,7 +141,10 @@
         </div>
         <div class="footer-bottom" style="margin-top: 4rem; padding: 2rem 0; border-top: 1px solid rgba(255,255,255,0.05);">
             <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
-                <p style="color: rgba(255,255,255,0.4); font-size: 0.85rem;">&copy; {{ date('Y') }} Murang'a County Women's Sacco. All rights reserved.</p>
+                <p style="color: rgba(255,255,255,0.4); font-size: 0.85rem;">
+                    &copy; {{ date('Y') }} Murang'a County Women's Sacco. All rights reserved. 
+                    | <a href="/admin" style="color: rgba(255,255,255,0.4); text-decoration: none; margin-left: 5px;">Staff Portal</a>
+                </p>
                 <div style="display: flex; gap: 1.5rem;">
                     <img src="https://img.icons8.com/color/48/000000/visa.png" style="height: 24px; filter: grayscale(1) opacity(0.5);" alt="Visa">
                     <img src="https://img.icons8.com/color/48/000000/mastercard.png" style="height: 24px; filter: grayscale(1) opacity(0.5);" alt="Mastercard">
@@ -144,5 +155,53 @@
     </footer>
 
     @livewireScripts
+
+    <script>
+        // Theme Switching Logic
+        const themeToggle = document.getElementById('theme-toggle');
+        const themeIcon = themeToggle.querySelector('i');
+        const body = document.body;
+
+        // Check for saved theme
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        updateThemeIcon(savedTheme);
+
+        themeToggle.addEventListener('click', () => {
+            const currentTheme = document.documentElement.getAttribute('data-theme');
+            const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+            
+            document.documentElement.setAttribute('data-theme', newTheme);
+            localStorage.setItem('theme', newTheme);
+            updateThemeIcon(newTheme);
+        });
+
+        function updateThemeIcon(theme) {
+            if (theme === 'dark') {
+                themeIcon.className = 'ph ph-sun';
+            } else {
+                themeIcon.className = 'ph ph-moon';
+            }
+        }
+
+        // Mobile Toggle Logic
+        const mobileToggle = document.querySelector('.mobile-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        const navActions = document.querySelector('.nav-actions');
+
+        if (mobileToggle) {
+            mobileToggle.addEventListener('click', () => {
+                navLinks.classList.toggle('active');
+                navActions.classList.toggle('active');
+                
+                const icon = mobileToggle.querySelector('i');
+                if (navLinks.classList.contains('active')) {
+                    icon.className = 'ph ph-x';
+                } else {
+                    icon.className = 'ph ph-list';
+                }
+            });
+        }
+    </script>
 </body>
 </html>

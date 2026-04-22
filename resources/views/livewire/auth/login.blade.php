@@ -1,10 +1,10 @@
-<div style="padding: 5rem 0; background: var(--bg-light); min-height: 80vh; display: flex; align-items: center; justify-content: center;">
+<div style="padding: 5rem 0; background: var(--bg-main); min-height: 80vh; display: flex; align-items: center; justify-content: center;">
     <div class="card" style="width: 100%; max-width: 450px; padding: 3rem;">
         <div style="text-align: center; margin-bottom: 2.5rem;">
             <div class="logo-icon" style="margin: 0 auto 1.5rem auto;">
                 <i class="ph-fill ph-leaf"></i>
             </div>
-            <h2 style="font-size: 1.75rem; font-weight: 700; color: var(--text-dark);">Welcome Back</h2>
+            <h2 style="font-size: 1.75rem; font-weight: 700; color: var(--text-main);">Welcome Back</h2>
             <p style="color: var(--text-gray); margin-top: 0.5rem;">Sign in to manage your SACCO accounts</p>
         </div>
 
@@ -17,7 +17,7 @@
 
             <div class="form-group">
                 <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0.5rem;">
-                    <label style="margin-bottom: 0;">Password</label>
+                    <label style="margin-bottom: 0; color: var(--text-main);">Password</label>
                     <a href="{{ route('password.request') }}" style="font-size: 0.875rem; color: var(--primary); text-decoration: none; font-weight: 500;">Forgot password?</a>
                 </div>
                 <input type="password" wire:model="password" class="form-control @error('password') is-invalid @enderror" placeholder="••••••••">
@@ -27,7 +27,7 @@
             <div class="form-group">
                 <label style="display: flex; align-items: center; gap: 0.5rem; cursor: pointer; font-size: 0.9rem;">
                     <input type="checkbox" wire:model="remember">
-                    <span>Remember me for 30 days</span>
+                    <span style="color: var(--text-main);">Remember me for 30 days</span>
                 </label>
             </div>
 
