@@ -27,9 +27,11 @@ class WebsiteImageResource extends Resource
             ->schema([
                 Forms\Components\Select::make('section')
                     ->options([
-                        'hero' => 'Hero Slider',
-                        'about' => 'About Us',
+                        'hero' => 'Hero Slider (Homepage)',
+                        'services' => 'Our Services (Homepage)',
+                        'about' => 'About Us Page',
                         'contact' => 'Contact Page',
+                        'hostels_page' => 'Hostels Page Hero',
                         'generic' => 'Generic Content',
                     ])
                     ->required(),

@@ -35,12 +35,22 @@ class HostelResource extends Resource
                     ->maxLength(255),
                 Forms\Components\Textarea::make('description')
                     ->columnSpanFull(),
-                Forms\Components\FileUpload::make('gallery')
-                    ->multiple()
-                    ->image()
-                    ->directory('hostels')
-                    ->reorderable()
+                Forms\Components\TagsInput::make('amenities')
+                    ->placeholder('Add amenity (e.g. Free Wi-Fi, 24/7 Security)')
+                    ->helperText('Type an amenity and press Enter')
                     ->columnSpanFull(),
+                Forms\Components\Section::make('Hostel Media')
+                    ->description('Upload multiple photos for the gallery and slideshow')
+                    ->schema([
+                        Forms\Components\FileUpload::make('gallery')
+                            ->multiple()
+                            ->image()
+                            ->imageEditor()
+                            ->directory('hostels')
+                            ->reorderable()
+                            ->appendFiles()
+                            ->columnSpanFull(),
+                    ]),
                 Forms\Components\Toggle::make('is_active')
                     ->required()
                     ->default(true),

@@ -1,9 +1,15 @@
 <div>
     @php
         $hostel = \App\Models\Hostel::where('name', 'LIKE', '%Sunrise%')->first() ?? \App\Models\Hostel::first();
+        $hostelsHero = \App\Models\WebsiteImage::where('section', 'hostels_page')->where('is_active', true)->latest()->first();
+        $heroBackground = $hostelsHero 
+            ? asset('storage/' . $hostelsHero->image_path) 
+            : (($hostel && $hostel->gallery && count($hostel->gallery) > 0) 
+                ? asset('storage/' . $hostel->gallery[0]) 
+                : 'https://images.unsplash.com/photo-1555854877-bab0e564b8d5?auto=format&fit=crop&q=80&w=1200');
     @endphp
 
-    <section class="hero" style="padding: 4rem 0; background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('{{ ($hostel && $hostel->gallery && count($hostel->gallery) > 0) ? asset('storage/' . $hostel->gallery[0]) : 'https://images.unsplash.com/photo-1555854877-bab0e564b8d5?auto=format&fit=crop&q=80&w=1200' }}'); background-size: cover; background-position: center; color: white;">
+    <section class="hero" style="padding: 4rem 0; background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('{{ $heroBackground }}'); background-size: cover; background-position: center; color: white;">
         <div class="container" style="text-align: center;">
             <h1 style="font-size: 3.5rem; font-weight: 800; color: white; text-shadow: 0 2px 4px rgba(0,0,0,0.3);">{{ $hostel->name ?? 'Premium Student Living' }}</h1>
             <p style="font-size: 1.25rem; max-width: 700px; margin: 1.5rem auto; opacity: 0.9; text-shadow: 0 1px 2px rgba(0,0,0,0.2);">Safe, secure, and modern accommodation managed by the Murang'a County Women's Sacco. Your home away from home.</p>
@@ -18,46 +24,91 @@
 
     <section id="features" style="padding: 5rem 0; background: var(--bg-main);">
         <div class="container">
-            <div class="grid-cards" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
-                <div class="text-center">
-                    <i class="ph-fill ph-shield-check" style="font-size: 3rem; color: var(--secondary); margin-bottom: 1rem;"></i>
-                    <h4>24/7 Security</h4>
-                    <p style="color: var(--text-gray); font-size: 0.9rem;">CCTV surveillance and professional security guards always on duty.</p>
+            @if($hostel && $hostel->amenities && count($hostel->amenities) > 0)
+                <div class="grid-cards" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+                    @foreach($hostel->amenities as $amenity)
+                        <div class="text-center" style="padding: 2rem; background: var(--bg-card); border-radius: var(--radius-lg); border: 1px solid var(--border);">
+                            <i class="ph-fill ph-sparkle" style="font-size: 2.5rem; color: var(--primary); margin-bottom: 1rem;"></i>
+                            <h4 style="margin-bottom: 0;">{{ $amenity }}</h4>
+                        </div>
+                    @endforeach
                 </div>
-                <div class="text-center">
-                    <i class="ph-fill ph-wifi-high" style="font-size: 3rem; color: var(--primary); margin-bottom: 1rem;"></i>
-                    <h4>Free High-Speed Wi-Fi</h4>
-                    <p style="color: var(--text-gray); font-size: 0.9rem;">Stay connected with reliable internet for all your studies.</p>
+            @else
+                <div class="grid-cards" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+                    <div class="text-center">
+                        <i class="ph-fill ph-shield-check" style="font-size: 3rem; color: var(--secondary); margin-bottom: 1rem;"></i>
+                        <h4>24/7 Security</h4>
+                        <p style="color: var(--text-gray); font-size: 0.9rem;">CCTV surveillance and professional security guards always on duty.</p>
+                    </div>
+                    <div class="text-center">
+                        <i class="ph-fill ph-wifi-high" style="font-size: 3rem; color: var(--primary); margin-bottom: 1rem;"></i>
+                        <h4>Free High-Speed Wi-Fi</h4>
+                        <p style="color: var(--text-gray); font-size: 0.9rem;">Stay connected with reliable internet for all your studies.</p>
+                    </div>
+                    <div class="text-center">
+                        <i class="ph-fill ph-drop" style="font-size: 3rem; color: #3B82F6; margin-bottom: 1rem;"></i>
+                        <h4>Constant Water</h4>
+                        <p style="color: var(--text-gray); font-size: 0.9rem;">Consistent water supply with backup tanks for your convenience.</p>
+                    </div>
+                    <div class="text-center">
+                        <i class="ph-fill ph-map-pin" style="font-size: 3rem; color: #EF4444; margin-bottom: 1rem;"></i>
+                        <h4>Near University</h4>
+                        <p style="color: var(--text-gray); font-size: 0.9rem;">Just a 5-minute walk from the main university gates.</p>
+                    </div>
                 </div>
-                <div class="text-center">
-                    <i class="ph-fill ph-drop" style="font-size: 3rem; color: #3B82F6; margin-bottom: 1rem;"></i>
-                    <h4>Constant Water</h4>
-                    <p style="color: var(--text-gray); font-size: 0.9rem;">Consistent water supply with backup tanks for your convenience.</p>
-                </div>
-                <div class="text-center">
-                    <i class="ph-fill ph-map-pin" style="font-size: 3rem; color: #EF4444; margin-bottom: 1rem;"></i>
-                    <h4>Near University</h4>
-                    <p style="color: var(--text-gray); font-size: 0.9rem;">Just a 5-minute walk from the main university gates.</p>
-                </div>
-            </div>
+            @endif
         </div>
     </section>
 
     @if($hostel && $hostel->gallery && count($hostel->gallery) > 0)
-    <section id="gallery" style="padding: 5rem 0; background: var(--bg-card);">
+    <section id="gallery" style="padding: 5rem 0; background: var(--bg-card); overflow: hidden;">
         <div class="container">
             <div class="section-header">
-                <h2>Hostel <span>Gallery</span></h2>
-                <p>Take a peek inside our modern facilities and comfortable living spaces.</p>
+                <h2>Explore <span>The Facilities</span></h2>
+                <p>Take a virtual tour through our modern hostels and premium amenities.</p>
             </div>
-            <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1rem;">
-                @foreach($hostel->gallery as $image)
-                    <div style="height: 250px; border-radius: var(--radius-lg); overflow: hidden; box-shadow: var(--shadow-md);">
-                        <img src="{{ asset('storage/' . $image) }}" style="width: 100%; height: 100%; object-fit: cover; transition: var(--transition);" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+            
+            <!-- Swiper Slideshow -->
+            <div class="swiper hostel-swiper" style="width: 100%; height: 500px; border-radius: var(--radius-lg); box-shadow: var(--shadow-xl);">
+                <div class="swiper-wrapper">
+                    @foreach($hostel->gallery as $image)
+                        <div class="swiper-slide">
+                            <img src="{{ asset('storage/' . $image) }}" style="width: 100%; height: 100%; object-fit: cover;">
+                        </div>
+                    @endforeach
+                </div>
+                <!-- Pagination & Navigation -->
+                <div class="swiper-pagination"></div>
+                <div class="swiper-button-prev" style="color: white;"></div>
+                <div class="swiper-button-next" style="color: white;"></div>
+            </div>
+
+            <!-- Thumbnail Navigation -->
+            <div class="swiper-thumbnails" style="display: flex; gap: 1rem; margin-top: 1.5rem; justify-content: center; overflow-x: auto; padding: 0.5rem;">
+                @foreach($hostel->gallery as $index => $image)
+                    <div class="thumb-item" onclick="hostelSwiper.slideTo({{ $index }})" style="width: 100px; height: 70px; flex-shrink: 0; border-radius: var(--radius-md); overflow: hidden; cursor: pointer; border: 2px solid transparent; transition: var(--transition);">
+                        <img src="{{ asset('storage/' . $image) }}" style="width: 100%; height: 100%; object-fit: cover;">
                     </div>
                 @endforeach
             </div>
         </div>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                window.hostelSwiper = new Swiper('.hostel-swiper', {
+                    loop: true,
+                    grabCursor: true,
+                    effect: 'creative',
+                    creativeEffect: {
+                        prev: { shadow: true, translate: [0, 0, -400] },
+                        next: { translate: ['100%', 0, 0] },
+                    },
+                    pagination: { el: '.swiper-pagination', clickable: true },
+                    navigation: { nextEl: '.swiper-button-next', prevEl: '.swiper-button-prev' },
+                    autoplay: { delay: 4000, disableOnInteraction: false },
+                });
+            });
+        </script>
     </section>
     @endif
 
