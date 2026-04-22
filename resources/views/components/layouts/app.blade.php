@@ -31,7 +31,7 @@
                 <span class="logo-text">Murang'a County Women's Sacco</span>
             </a>
 
-            <div class="nav-links" style="margin-left: 3.5rem; gap: 1.75rem; padding-right: 3rem">
+            <div class="nav-links nav-links-spaced">
                 <a href="/" class="{{ request()->is('/') ? 'active' : '' }}">Home</a>
                 <a href="/about" class="{{ request()->is('about') ? 'active' : '' }}">About</a>
                 <a href="/loans/apply" class="{{ request()->is('loans*') ? 'active' : '' }}">Loans</a>
@@ -39,7 +39,7 @@
                 <a href="/contact" class="{{ request()->is('contact') ? 'active' : '' }}">Contact</a>
             </div>
 
-            <div class="nav-actions" style="margin-left: auto; gap: 1rem;">
+            <div class="nav-actions nav-actions-spaced">
                 <button id="theme-toggle" class="theme-toggle" title="Toggle Theme">
                     <i class="ph ph-moon"></i>
                 </button>
@@ -79,75 +79,50 @@
                     <span class="logo-icon" style="background: white; color: var(--primary);"><i class="ph-fill ph-leaf"></i></span>
                     <span class="logo-text" style="color: white; font-size: 1.5rem;">MCWSacco</span>
                 </div>
-                <p style="color: rgba(255,255,255,0.7); max-width: 350px; margin-bottom: 2rem; line-height: 1.8;">Empowering women in Murang'a County through sustainable financial solutions, professional mentorship, and a community-driven approach to growth since 2012.</p>
-                <div class="social-links" style="display: flex; gap: 1rem;">
+                <p style="max-width: 350px; margin-bottom: 2rem; line-height: 1.8;">Empowering women in Murang'a County through sustainable financial solutions, professional mentorship, and a community-driven approach to growth since 2012.</p>
+                <div class="social-links">
                     <a href="#" class="social-icon facebook" title="Facebook"><i class="ph-fill ph-facebook-logo"></i></a>
                     <a href="#" class="social-icon twitter" title="X (Twitter)"><i class="ph-fill ph-twitter-logo"></i></a>
                     <a href="#" class="social-icon instagram" title="Instagram"><i class="ph-fill ph-instagram-logo"></i></a>
                     <a href="#" class="social-icon linkedin" title="LinkedIn"><i class="ph-fill ph-linkedin-logo"></i></a>
                 </div>
-
-                <style>
-                    .social-icon {
-                        width: 42px;
-                        height: 42px;
-                        background: rgba(255,255,255,0.08);
-                        border-radius: 12px;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        color: rgba(255,255,255,0.8);
-                        transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-                        text-decoration: none;
-                        font-size: 1.2rem;
-                    }
-                    .social-icon:hover {
-                        transform: translateY(-5px) scale(1.1);
-                        color: white;
-                        box-shadow: 0 10px 20px rgba(0,0,0,0.2);
-                    }
-                    .social-icon.facebook:hover { background: #1877F2; }
-                    .social-icon.twitter:hover { background: #000000; }
-                    .social-icon.instagram:hover { background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%); }
-                    .social-icon.linkedin:hover { background: #0077b5; }
-                </style>
             </div>
 
             <div class="footer-links">
-                <h4 style="color: white; margin-bottom: 1.5rem; font-size: 1.1rem; font-weight: 600;">Quick Navigation</h4>
+                <h4 style="margin-bottom: 1.5rem; font-size: 1.1rem; font-weight: 600;">Quick Navigation</h4>
                 <div style="display: flex; flex-direction: column; gap: 0.75rem;">
-                    <a href="/" style="color: rgba(255,255,255,0.6); text-decoration: none; transition: var(--transition);">Home</a>
-                    <a href="/about" style="color: rgba(255,255,255,0.6); text-decoration: none; transition: var(--transition);">About Our Journey</a>
-                    <a href="/loans/apply" style="color: rgba(255,255,255,0.6); text-decoration: none; transition: var(--transition);">Loan Products</a>
-                    <a href="/hostels/book" style="color: rgba(255,255,255,0.6); text-decoration: none; transition: var(--transition);">Student Hostels</a>
-                    <a href="/contact" style="color: rgba(255,255,255,0.6); text-decoration: none; transition: var(--transition);">Get in Touch</a>
+                    <a href="/" style="color: inherit; text-decoration: none; opacity: 0.8;">Home</a>
+                    <a href="/about" style="color: inherit; text-decoration: none; opacity: 0.8;">About Our Journey</a>
+                    <a href="/loans/apply" style="color: inherit; text-decoration: none; opacity: 0.8;">Loan Products</a>
+                    <a href="/hostels/book" style="color: inherit; text-decoration: none; opacity: 0.8;">Student Hostels</a>
+                    <a href="/contact" style="color: inherit; text-decoration: none; opacity: 0.8;">Get in Touch</a>
                 </div>
             </div>
 
             <div class="footer-links">
-                <h4 style="color: white; margin-bottom: 1.5rem; font-size: 1.1rem; font-weight: 600;">Legal & Security</h4>
+                <h4 style="margin-bottom: 1.5rem; font-size: 1.1rem; font-weight: 600;">Legal & Security</h4>
                 <div style="display: flex; flex-direction: column; gap: 0.75rem;">
-                    <a href="#" style="color: rgba(255,255,255,0.6); text-decoration: none; transition: var(--transition);">Privacy Policy</a>
-                    <a href="#" style="color: rgba(255,255,255,0.6); text-decoration: none; transition: var(--transition);">Terms of Service</a>
-                    <a href="#" style="color: rgba(255,255,255,0.6); text-decoration: none; transition: var(--transition);">Security Standards</a>
-                    <a href="#" style="color: rgba(255,255,255,0.6); text-decoration: none; transition: var(--transition);">Sacco Bylaws</a>
+                    <a href="#" style="color: inherit; text-decoration: none; opacity: 0.8;">Privacy Policy</a>
+                    <a href="#" style="color: inherit; text-decoration: none; opacity: 0.8;">Terms of Service</a>
+                    <a href="#" style="color: inherit; text-decoration: none; opacity: 0.8;">Security Standards</a>
+                    <a href="#" style="color: inherit; text-decoration: none; opacity: 0.8;">Sacco Bylaws</a>
                 </div>
             </div>
 
             <div class="footer-contact">
-                <h4 style="color: white; margin-bottom: 1.5rem; font-size: 1.1rem; font-weight: 600;">Office Location</h4>
-                <div style="display: flex; flex-direction: column; gap: 1rem; color: rgba(255,255,255,0.6);">
+                <h4 style="margin-bottom: 1.5rem; font-size: 1.1rem; font-weight: 600;">Office Location</h4>
+                <div style="display: flex; flex-direction: column; gap: 1rem; opacity: 0.8;">
                     <p style="display: flex; align-items: flex-start; gap: 0.75rem;"><i class="ph ph-map-pin" style="color: var(--secondary); margin-top: 3px;"></i> 123 SACCO Plaza, 4th Floor<br>Murang'a Town, Kenya</p>
                     <p style="display: flex; align-items: center; gap: 0.75rem;"><i class="ph ph-phone" style="color: var(--secondary);"></i> +254 712 345 678</p>
                     <p style="display: flex; align-items: center; gap: 0.75rem;"><i class="ph ph-envelope" style="color: var(--secondary);"></i> info@mwsacco.co.ke</p>
                 </div>
             </div>
         </div>
-        <div class="footer-bottom" style="margin-top: 4rem; padding: 2rem 0; border-top: 1px solid rgba(255,255,255,0.05);">
+        <div class="footer-bottom">
             <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
-                <p style="color: rgba(255,255,255,0.4); font-size: 0.85rem;">
+                <p style="font-size: 0.85rem; opacity: 0.6;">
                     &copy; {{ date('Y') }} Murang'a County Women's Sacco. All rights reserved. 
-                    | <a href="/admin" style="color: rgba(255,255,255,0.4); text-decoration: none; margin-left: 5px;">Staff Portal</a>
+                    | <a href="/admin" style="color: inherit; text-decoration: none; margin-left: 5px;">Staff Portal</a>
                 </p>
                 <div style="display: flex; gap: 1.5rem;">
                     <img src="https://img.icons8.com/color/48/000000/visa.png" style="height: 24px; filter: grayscale(1) opacity(0.5);" alt="Visa">
