@@ -114,6 +114,7 @@ body {
     font-weight: 700;
     letter-spacing: -0.025em;
     display: block;
+    white-space: nowrap;
 }
 
 .nav-links {

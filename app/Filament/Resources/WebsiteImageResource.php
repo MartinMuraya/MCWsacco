@@ -40,6 +40,9 @@ class WebsiteImageResource extends Resource
                 Forms\Components\FileUpload::make('image_path')
                     ->image()
                     ->directory('website')
+                    ->preserveFilenames()
+                    ->imageEditor()
+                    ->maxSize(5120) // 5MB limit
                     ->required(),
                 Forms\Components\Toggle::make('is_active')
                     ->required()

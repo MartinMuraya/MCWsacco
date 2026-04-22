@@ -1,19 +1,47 @@
 <x-layouts.app>
-    <section class="hero">
-        <div class="container hero-content">
+    <section class="hero" style="padding: 10rem 0 8rem 0; background: radial-gradient(circle at top right, rgba(16, 185, 129, 0.05), transparent), var(--bg-main); overflow: hidden;">
+        <div class="container hero-content" style="gap: 5rem;">
             <div class="hero-text">
-                <h1>Empowering <span>Women</span>, Building a Stronger Murang'a</h1>
-                <p>Join thousands of women who are transforming their lives through shared growth, financial support, and a community that cares about your success.</p>
-                <div class="nav-actions" style="justify-content: flex-start;">
-                    <a href="#" class="btn btn-primary">Start Your Journey</a>
-                    <a href="/about" class="btn btn-outline">Learn More</a>
+                <div style="display: inline-flex; align-items: center; gap: 0.5rem; background: rgba(16, 185, 129, 0.1); color: var(--primary); padding: 0.5rem 1.25rem; border-radius: 2rem; font-weight: 700; font-size: 0.85rem; margin-bottom: 2rem; text-transform: uppercase; letter-spacing: 0.1em;">
+                    <i class="ph-fill ph-sparkle"></i> Empowering Murang'a Women
+                </div>
+                <h1 style="font-size: 4rem; font-weight: 900; line-height: 1.1; letter-spacing: -0.04em; margin-bottom: 2rem;">Empowering <span style="color: var(--primary);">Women</span>, Building a Stronger County</h1>
+                <p style="font-size: 1.25rem; line-height: 1.7; color: var(--text-gray); margin-bottom: 3rem; max-width: 600px;">Join thousands of women who are transforming their lives through shared growth, financial support, and a community that cares about your success.</p>
+                <div class="nav-actions" style="justify-content: flex-start; gap: 1.5rem;">
+                    <a href="/register" class="btn btn-primary" style="padding: 1.25rem 2.5rem; font-size: 1.1rem; border-radius: 1.25rem;">Start Your Journey <i class="ph ph-arrow-right"></i></a>
+                    <a href="/about" class="btn btn-outline" style="padding: 1.25rem 2rem; font-size: 1.1rem; border-radius: 1.25rem;">Learn More</a>
                 </div>
             </div>
-            <div class="hero-image">
-                @php
-                    $heroImage = \App\Models\WebsiteImage::where('section', 'hero')->where('is_active', true)->latest()->first();
-                @endphp
-                <img src="{{ $heroImage ? asset('storage/' . $heroImage->image_path) : 'https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&q=80&w=1200' }}" alt="Women Empowerment">
+            <div class="hero-image" style="width: 100%; max-width: 600px; position: relative;">
+                <div class="swiper hero-swiper" style="border-radius: var(--radius-xl); box-shadow: var(--shadow-xl); overflow: hidden;">
+                    <div class="swiper-wrapper">
+                        @php
+                            $heroImages = \App\Models\WebsiteImage::where('section', 'hero')->where('is_active', true)->latest()->get();
+                        @endphp
+                        @forelse($heroImages as $img)
+                            <div class="swiper-slide">
+                                <img src="{{ asset('storage/' . $img->image_path) }}" alt="{{ $img->title }}" style="width: 100%; height: 450px; object-fit: cover;">
+                            </div>
+                        @empty
+                            <div class="swiper-slide">
+                                <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&q=80&w=1200" alt="Women Empowerment" style="width: 100%; height: 450px; object-fit: cover;">
+                            </div>
+                        @endforelse
+                    </div>
+                    <div class="swiper-pagination"></div>
+                </div>
+
+                <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+                        new Swiper('.hero-swiper', {
+                            loop: true,
+                            autoplay: { delay: 5000, disableOnInteraction: false },
+                            effect: 'fade',
+                            fadeEffect: { crossFade: true },
+                            pagination: { el: '.swiper-pagination', clickable: true },
+                        });
+                    });
+                </script>
             </div>
         </div>
     </section>

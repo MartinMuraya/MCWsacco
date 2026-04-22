@@ -31,7 +31,7 @@
                 <span class="logo-text">Murang'a County Women's Sacco</span>
             </a>
 
-            <div class="nav-links">
+            <div class="nav-links" style="margin-left: 3.5rem; gap: 1.75rem;">
                 <a href="/" class="{{ request()->is('/') ? 'active' : '' }}">Home</a>
                 <a href="/about" class="{{ request()->is('about') ? 'active' : '' }}">About</a>
                 <a href="/loans/apply" class="{{ request()->is('loans*') ? 'active' : '' }}">Loans</a>
@@ -39,14 +39,14 @@
                 <a href="/contact" class="{{ request()->is('contact') ? 'active' : '' }}">Contact</a>
             </div>
 
-            <div class="nav-actions">
+            <div class="nav-actions" style="margin-left: auto; gap: 1rem;">
                 <button id="theme-toggle" class="theme-toggle" title="Toggle Theme">
                     <i class="ph ph-moon"></i>
                 </button>
                 @auth
                     @if(auth()->user()->hasRole('admin') || auth()->user()->email === 'admin@mwsacco.co.ke')
                         <a href="/admin" class="btn btn-outline btn-sm" style="border-color: var(--accent); color: var(--accent);">
-                            <i class="ph ph-shield-check"></i> Admin Portal
+                            <i class="ph ph-shield-check"></i> Admin
                         </a>
                     @endif
                     <a href="{{ route('dashboard') }}" class="btn btn-primary btn-sm">

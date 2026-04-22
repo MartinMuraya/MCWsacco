@@ -1,6 +1,5 @@
 <div>
     @php
-        $hostel = \App\Models\Hostel::where('name', 'LIKE', '%Sunrise%')->first() ?? \App\Models\Hostel::first();
         $hostelsHero = \App\Models\WebsiteImage::where('section', 'hostels_page')->where('is_active', true)->latest()->first();
         $heroBackground = $hostelsHero 
             ? asset('storage/' . $hostelsHero->image_path) 

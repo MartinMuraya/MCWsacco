@@ -14,6 +14,14 @@ class HostelBookingWizard extends Component
     
     public $hostel_id;
     public $room_id;
+
+    public function mount()
+    {
+        $defaultHostel = Hostel::where('name', 'LIKE', '%Sunrise%')->first() ?? Hostel::first();
+        if ($defaultHostel) {
+            $this->hostel_id = $defaultHostel->id;
+        }
+    }
     
     public $student_name;
     public $student_phone;
@@ -83,11 +91,13 @@ class HostelBookingWizard extends Component
     public function render()
     {
         $hostels = Hostel::all();
-        $rooms = $this->hostel_id ? Room::where('hostel_id', $this->hostel_id)->get() : collect([]);
+        $selectedHostel = $this->hostel_id ? Hostel::find($this->hostel_id) : null;
+        $rooms = $this->hostel_id ? Room::where('hostel_id', $this->hostel_id)->where('is_active', true)->get() : collect([]);
         $intakes = UniversityIntake::where('is_active', true)->get();
         
         return view('livewire.hostel-booking-wizard', [
             'hostels' => $hostels,
+            'hostel' => $selectedHostel,
             'rooms' => $rooms,
             'intakes' => $intakes,
         ]);
