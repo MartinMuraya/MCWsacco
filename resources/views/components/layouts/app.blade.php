@@ -31,7 +31,7 @@
                 <span class="logo-text">Murang'a County Women's Sacco</span>
             </a>
 
-            <div class="nav-links" style="margin-left: 3.5rem; gap: 1.75rem;">
+            <div class="nav-links" style="margin-left: 3.5rem; gap: 1.75rem; padding-right: 3rem">
                 <a href="/" class="{{ request()->is('/') ? 'active' : '' }}">Home</a>
                 <a href="/about" class="{{ request()->is('about') ? 'active' : '' }}">About</a>
                 <a href="/loans/apply" class="{{ request()->is('loans*') ? 'active' : '' }}">Loans</a>
@@ -46,7 +46,7 @@
                 @auth
                     @if(auth()->user()->hasRole('admin') || auth()->user()->email === 'admin@mwsacco.co.ke')
                         <a href="/admin" class="btn btn-outline btn-sm" style="border-color: var(--accent); color: var(--accent);">
-                            <i class="ph ph-shield-check"></i> Admin
+                            <i class="ph ph-shield-check"></i> Admin CRUD
                         </a>
                     @endif
                     <a href="{{ route('dashboard') }}" class="btn btn-primary btn-sm">
@@ -77,7 +77,7 @@
             <div class="footer-brand" style="flex: 2;">
                 <div class="logo" style="margin-bottom: 1.5rem;">
                     <span class="logo-icon" style="background: white; color: var(--primary);"><i class="ph-fill ph-leaf"></i></span>
-                    <span class="logo-text" style="color: white; font-size: 1.5rem;">Murang'a County Women's Sacco</span>
+                    <span class="logo-text" style="color: white; font-size: 1.5rem;">MCWSacco</span>
                 </div>
                 <p style="color: rgba(255,255,255,0.7); max-width: 350px; margin-bottom: 2rem; line-height: 1.8;">Empowering women in Murang'a County through sustainable financial solutions, professional mentorship, and a community-driven approach to growth since 2012.</p>
                 <div class="social-links" style="display: flex; gap: 1rem;">
