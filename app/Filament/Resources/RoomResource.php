@@ -25,14 +25,21 @@ class RoomResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('hostel_id')
-                    ->tel()
-                    ->required()
-                    ->numeric(),
+                Forms\Components\Select::make('hostel_id')
+                    ->relationship('hostel', 'name')
+                    ->searchable()
+                    ->preload()
+                    ->required(),
                 Forms\Components\TextInput::make('room_number')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\TextInput::make('room_type')
+                Forms\Components\Select::make('room_type')
+                    ->options([
+                        'SINGLE' => 'Single',
+                        'DOUBLE' => 'Double',
+                        'TRIPLE' => 'Triple',
+                        'STUDIO' => 'Studio',
+                    ])
                     ->required(),
                 Forms\Components\TextInput::make('floor')
                     ->maxLength(255)
@@ -42,11 +49,13 @@ class RoomResource extends Resource
                     ->numeric(),
                 Forms\Components\TextInput::make('price_per_semester')
                     ->required()
-                    ->numeric(),
-                Forms\Components\Textarea::make('amenities')
+                    ->numeric()
+                    ->prefix('KES'),
+                Forms\Components\TagsInput::make('amenities')
                     ->columnSpanFull(),
                 Forms\Components\Toggle::make('is_active')
-                    ->required(),
+                    ->required()
+                    ->default(true),
             ]);
     }
 
@@ -54,9 +63,9 @@ class RoomResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('hostel_id')
-                    ->numeric()
-                    ->sortable(),
+                Tables\Columns\TextColumn::make('hostel.name')
+                    ->sortable()
+                    ->searchable(),
                 Tables\Columns\TextColumn::make('room_number')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('room_type'),
@@ -66,15 +75,11 @@ class RoomResource extends Resource
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('price_per_semester')
-                    ->numeric()
+                    ->money('KES')
                     ->sortable(),
                 Tables\Columns\IconColumn::make('is_active')
                     ->boolean(),
                 Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('updated_at')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),

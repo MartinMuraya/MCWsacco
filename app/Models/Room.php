@@ -6,7 +6,11 @@ use Illuminate\Database\Eloquent\Model;
 
 class Room extends Model
 {
-    //
+    protected $guarded = [];
+
+    protected $casts = [
+        'amenities' => 'array',
+    ];
 
     public function hostel() { return $this->belongsTo(Hostel::class); }
 
